@@ -1,0 +1,6 @@
+# Overview
+
+Trackify is a fullstack React (Vite) website that allows users to create playlists based on genre.
+Each Playlist is tailored to the user who creates them as all songs are taken from their "Recommended" songs.
+
+
