@@ -18,7 +18,7 @@ function App() {
       <div className='head'>
         <img src={Logo} alt="Trackify" className='logo' />
 
-        <a href='http://localhost:5000/login' ><b>Log in</b></a>
+        <a href='http://127.0.0.1:5000/login' ><b>Log in</b></a>
       </div>
 
       <div className='content'>

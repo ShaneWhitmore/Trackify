@@ -1,4 +1,5 @@
 require('dotenv').config();
+const request = require('request')
 const express = require('express')
 const querystring = require('querystring')
 const axios = require('axios')
@@ -59,6 +60,23 @@ app.get('/callback', function (req, res) {
             },
             json: true
         };
+
+        request.post(authOptions, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                const access_token = body.access_token;
+                const refresh_token = body.refresh_token;
+
+                res.redirect(FRONTEND_URI + '/#' +
+                    querystring.stringify({
+                        access_token: access_token,
+                        refresh_token: refresh_token
+                    }));
+            } else {
+                console.error("Spotify token error:", error || body);
+                res.redirect('/#' +
+                    querystring.stringify({ error: 'invalid_token' }));
+            }
+        });
     }
 });
 

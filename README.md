@@ -5,6 +5,15 @@ Each Playlist is tailored to the user who creates them as all songs are taken fr
 
 ---
 
+
+# User Interface
+
+
+
+
+---
+
+
 # Technologies
 
 ### Frontend
@@ -59,4 +68,3 @@ This has been **excluded from version control** via '.gitignore'.
 # Setup
 
 
-# User Interface
