@@ -62,6 +62,16 @@ website/
 The '/server' folder contains a '.env' file with the Spotify API credentials.
 This has been **excluded from version control** via '.gitignore'.
 
+The .env file structure is as follows:
+
+```
+SPOTIFY_CLIENT_ID=""
+SPOTIFY_CLIENT_SECRET=""
+SPOTIFY_REDIRECT_URI={REDIRECT URI TO BACKEND TO REQUEST ACCESS TOKEN}
+FRONTEND_URI={URI OF FRONTEND PAGE}
+
+```
+
 
 ---
 
