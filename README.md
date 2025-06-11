@@ -29,27 +29,31 @@ Each Playlist is tailored to the user who creates them as all songs are taken fr
 
 # Project Structure
 
+```
 website/
-├── server/                # Backend (Node.js + Express)
-│   ├── .env               # Spotify credentials (excluded from repo)
-│   ├── server.js          # Entry point
-│   └── ...                # Routes, controllers, etc.
-│
-└── trackify/              # Frontend (React + Vite)
-    ├── src/
-    │   ├── components/    # Reusable UI components
-    |   |── images/        # Images for buttons and Navbars etc.
-    |   |── stylesheets/   # Stylesheets for each individual component
-    │   └── App.jsx        # Main app component
-    └── vite.config.js     # Vite configuration
+|-- server/ # Backend (Node.js + Express)
+|   |-- .env # Spotify credentials (excluded from repo)
+|   |-- server.js # Entry point
+|   |-- ... # Routes, controllers, etc. 
+|
+| -- trackify/ # Frontend (React + Vite)
+|   |-- src/
+|   |-- components/ # Reusable UI components
+|   |-- images/ # Images for buttons and Navbars etc.
+|   |-- stylesheets/ # Stylesheets for each individual component
+| -- App.jsx # Main app component -- vite.config.js # Vite configuration
+```
 
 
 
 ---
 
 # Environment Variables
+
 The '/server' folder contains a '.env' file with the Spotify API credentials.
 This has been **excluded from version control** via '.gitignore'.
+
+
 ---
 
 # Setup
