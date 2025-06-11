@@ -1,0 +1,51 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0; 
+  background-color: #191414;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%; 
+}
+
+
+.head{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px;
+  
+  background-color: #2D3138;
+  
+}
+
+.head a{
+  position: absolute;
+  right: 40px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+
+.content{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-direction: row;
+  height: 60%;
+  width: 100%;
+  padding-top: 10%;
+}
+
+.playlist-form, .playlist{
+  flex: 1;
+  max-width: 600px;
+}
+

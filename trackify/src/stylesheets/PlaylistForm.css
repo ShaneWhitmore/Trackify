@@ -1,0 +1,163 @@
+/* On/ Off Button */
+.vis-btn {
+    background-color: #2D3138;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    position: relative;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.vis-btn .thumb {
+    height: 20px;
+    width: 20px;
+    background-color: #1ED760;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.vis-btn.Private .thumb {
+    transform: translateY(-50%) translateX(30px);
+}
+
+
+.playlist-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.playlist-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+
+    margin: 5%;
+
+}
+
+.title-field {
+    padding-bottom: 5%;
+}
+
+#standard-basic {
+    color: #AEAEAE;
+}
+
+.visibility {
+    padding-top: 5%;
+}
+
+.playlist-cover {
+    cursor: pointer;
+}
+
+
+
+.genre-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 5%;
+
+}
+
+.genre-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #AEAEAE;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.genre-title p {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+    font-weight: bold;
+}
+
+.divider {
+
+    border: none;
+    width: 100%;
+    border-top: 2px solid #AEAEAE;
+}
+
+.genre-buttons{
+    padding: 5px;
+
+}
+.genreButton {
+    background-color: #191414;
+    color: #AEAEAE;
+    border: 3px solid #AEAEAE;
+    font-size: large;
+    font-weight: bold;
+    margin: 5px;
+    outline: none;
+    
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, border-width 0.15s;
+}
+
+.genreButton:focus {
+    outline: none;
+    box-shadow: none;
+    border: 3px solid #AEAEAE;
+}
+
+.genreButton:hover {
+    outline: none;
+    box-shadow: none;
+    border: 3px solid #AEAEAE;
+}
+
+.genreButton.selected {
+    background-color: #191414;
+    color: #FFFFFF;
+    border: 4px solid #1ED760;
+    margin: 5px;
+}
+
+
+.submission{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.submission-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 35%;
+    margin-top: 10px;    
+}
+
+.cancel-button {
+    background-color: #191414;
+    color: #1ED760;
+    border: 3px solid #FFFFFF;
+    border-radius: 50px;
+}
+
+.submit-button {
+    background-color: #1ED760;
+    color: #191414;
+    border: 3px solid #1ED760;
+    border-radius: 50px;
+}
