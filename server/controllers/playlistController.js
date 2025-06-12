@@ -15,17 +15,23 @@ exports.createPlaylist = (req, res) => {
 
     //step 1 create the playlist
 
+        // https://developer.spotify.com/documentation/web-api/reference/create-playlist
+
 
 
 
     //step 2 search recommended songs for each genre in genres 
 
+        // https://developer.spotify.com/documentation/web-api/reference/get-recommendations
 
 
     //Step 3 populate the playlist with the songs
 
+        // https://developer.spotify.com/documentation/web-api/reference/add-tracks-to-playlist
 
-    
+
+
+        
 
     //Step 4 return the playlist information to the front end and populate "Playlist" Component
 
