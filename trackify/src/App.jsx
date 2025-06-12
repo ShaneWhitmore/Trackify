@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
@@ -11,7 +11,20 @@ import './App.css'
 
 function App() {
 
-  const [playlistVisible , setPlaylistVisible] = useState(false);
+  const [playlistVisible, setPlaylistVisible] = useState(false);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const params = new URLSearchParams(hash.substring(1));
+      const token = params.get('access_token');
+      if (token) {
+        localStorage.setItem("spotify_token", token);
+        window.history.pushState("", document.title, window.location.pathname);
+      }
+
+    }
+  }, []);
 
   return (
     <>
@@ -23,11 +36,11 @@ function App() {
 
       <div className='content'>
         <div className='playlist-form'>
-          <PlaylistForm onSubmitSuccess ={() => setPlaylistVisible(true)} onCancel={() => setPlaylistVisible(false)}/>
+          <PlaylistForm onSubmitSuccess={() => setPlaylistVisible(true)} onCancel={() => setPlaylistVisible(false)} />
         </div>
 
         <div className='playlist'>
-          <Playlist visible={playlistVisible}/>
+          <Playlist visible={playlistVisible} />
         </div>
       </div>
 
