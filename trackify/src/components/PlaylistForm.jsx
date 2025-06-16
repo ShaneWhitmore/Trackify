@@ -36,25 +36,20 @@ function PlaylistForm(props) {
         }
         else {
             try {
-
                 const token = localStorage.getItem("spotify_token");
                 if (!token) {
                     window.alert("Missing Spotify token. Please log in again.");
                     return;
                 }
 
-                console.log("token received")
-
-
                 const req = await axios.post("http://localhost:5000/createPlaylist", {
                     title: title,
                     coverImage: ImportCover,
-                    visibility: isPrivate ? "Private" : "Public",
+                    visibility: !isPrivate,
                     genres: Array.from(selectedGenres),
                     token:token,
                 });
 
-                console.log("playlist sent to backend")
 
 
                 const newPlaylist = req.data;

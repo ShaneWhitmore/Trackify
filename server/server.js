@@ -14,7 +14,7 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow your Vite frontend
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST'],
     credentials: true,
 }));
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 
 
 app.use('/' , authRoutes); //handles login and access token request , redirects back to frontend
-app.use('/',playlistRoutes);
+app.use('/',playlistRoutes); //handles playlist creation and selecting music for playlist
 
 
 
