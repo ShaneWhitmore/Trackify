@@ -17,12 +17,8 @@ exports.createPlaylist = async (req, res) => {
 
 
         const profile = await fetchProfile(token);
+        const user_name = profile.display_name;
         const user_id = profile.id;
-
-
-
-
-
 
         //step 1 create the playlist
         // https://developer.spotify.com/documentation/web-api/reference/create-playlist
@@ -41,17 +37,17 @@ exports.createPlaylist = async (req, res) => {
         //Step 3 populate the playlist with the songs
         // https://developer.spotify.com/documentation/web-api/reference/add-tracks-to-playlist
         const populatedPlaylist = await populatePlaylist(token, playlist.id, genreTopTracks);
-        console.log(populatedPlaylist);
+        //console.log(populatedPlaylist);
 
 
 
         //Step 4 return the playlist information to the front end and populate "Playlist" Component
+        const result = await getPlaylist(token, playlist.id);
 
 
+        console.log(result);
 
-
-
-        return res.json({ message: "Received playlist data successfully", title });
+        return res.json({ message: "New playlist", result });
     }
 }
 
@@ -132,9 +128,6 @@ async function getTopTracks(token, genres, genreMap) {
     const allTracks = await Promise.all(trackPromises);
     const tracks = allTracks[0];
     const uris = tracks.map(track => track.uri);
-
-
-    console.log(uris);
     return uris.flat();
 }
 
@@ -156,4 +149,18 @@ async function populatePlaylist(token, playlist_id, genreTopTracks) {
 
     return await result.json();
 
+}
+
+
+async function getPlaylist(token, playlist_id) {
+
+    const result = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+        }
+    });
+
+    return await result.json();
 }

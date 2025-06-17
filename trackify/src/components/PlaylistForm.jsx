@@ -53,6 +53,8 @@ function PlaylistForm(props) {
 
 
                 const newPlaylist = req.data;
+
+                
                 console.log(newPlaylist);
 
                 props.onSubmitSuccess(newPlaylist);

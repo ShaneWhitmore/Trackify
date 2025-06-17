@@ -10,8 +10,12 @@ import Playlist from './components/Playlist.jsx'
 import './App.css'
 
 function App() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [playlist, setPlaylist] = useState(null);
 
-  const [playlistVisible, setPlaylistVisible] = useState(false);
+  const handleNewPlaylist = (newPlaylist) => {
+    setPlaylist(newPlaylist)
+  }
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -36,11 +40,18 @@ function App() {
 
       <div className='content'>
         <div className='playlist-form'>
-          <PlaylistForm onSubmitSuccess={() => setPlaylistVisible(true)} onCancel={() => setPlaylistVisible(false)} />
+          <PlaylistForm onSubmitSuccess={(newPlaylist) => {
+            setIsVisible(true);
+            handleNewPlaylist(newPlaylist);
+
+            console.log(newPlaylist);
+          }} onCancel={() => setPlaylistVisible(false)} />
+
+          
         </div>
 
         <div className='playlist'>
-          <Playlist visible={playlistVisible} />
+          <Playlist visible={isVisible} playlist={playlist} />
         </div>
       </div>
 
