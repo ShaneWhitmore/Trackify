@@ -1,10 +1,10 @@
 # Technologies
 
 <p align="center">
-  <img src="./images/jsLogo.png" alt="JavaScript" width="60"/>
-  <img src="./images/reactLlogo.png" alt="React" width="60"/>
-  <img src="./images/viteLogo.png" alt="Vite" width="60"/>
-  <img src="./images/nodeLogo.png" alt="Node.js" width="60"/>
+  <img src="./images/jsLogo.png" alt="JavaScript" width="100"/>
+  <img src="./images/reactLogo.png" alt="React" width="100"/>
+  <img src="./images/viteLogo.png" alt="Vite" width="100"/>
+  <img src="./images/nodeLogo.png" alt="Node.js" width="100"/>
 </p>
 
 --- 
