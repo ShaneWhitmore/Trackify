@@ -41,7 +41,7 @@ function App() {
       <div className='content'>
         <div className='playlist-form'>
           <PlaylistForm onSubmitSuccess={(newPlaylist) => {
-            setIsVisible(value);
+            setIsVisible(true);
             handleNewPlaylist(newPlaylist);
 
             console.log(newPlaylist);

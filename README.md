@@ -20,8 +20,9 @@ Each Playlist is tailored to the user who creates them as all songs are taken fr
 
 # User Interface
 
-
-
+<p align="center">
+  <img src="./images/TrackifyUI.png" alt="User Interface" width="300"/>
+</p>
 
 ---
 
