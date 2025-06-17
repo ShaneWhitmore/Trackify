@@ -41,11 +41,11 @@ function App() {
       <div className='content'>
         <div className='playlist-form'>
           <PlaylistForm onSubmitSuccess={(newPlaylist) => {
-            setIsVisible(true);
+            setIsVisible(value);
             handleNewPlaylist(newPlaylist);
 
             console.log(newPlaylist);
-          }} onCancel={() => setPlaylistVisible(false)} />
+          }} onCancel={() => setIsVisible(false)} />
 
           
         </div>

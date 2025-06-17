@@ -81,7 +81,7 @@ function Playlist({ visible, playlist }) {
                     </div>
 
                     <div className="songs-list">
-                        <SongTab value={totalTracks} items={tracks} />
+                        <SongTab items={tracks} />
                     </div>
 
 
@@ -95,7 +95,7 @@ function Playlist({ visible, playlist }) {
 }
 
 
-function SongTab({ value, items }) {
+function SongTab({ items }) {
     console.log(items);
 
 

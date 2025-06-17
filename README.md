@@ -1,3 +1,15 @@
+# Technologies
+
+<p align="center">
+  <img src="./images/jsLogo.png" alt="JavaScript" width="60"/>
+  <img src="./images/reactLlogo.png" alt="React" width="60"/>
+  <img src="./images/viteLogo.png" alt="Vite" width="60"/>
+  <img src="./images/nodeLogo.png" alt="Node.js" width="60"/>
+</p>
+
+--- 
+
+
 # Overview
 
 Trackify is a fullstack React (Vite) website that allows users to create playlists based on genre.
