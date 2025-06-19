@@ -24,30 +24,23 @@ exports.createPlaylist = async (req, res) => {
         // https://developer.spotify.com/documentation/web-api/reference/create-playlist
 
         const playlist = await createPlaylist(user_id, token, title, visibility);
-        //console.log(playlist);
 
 
         //step 2 search recommended songs for each genre in genres 
         // https://developer.spotify.com/documentation/web-api/reference/get-recommendations
 
         const genreTopTracks = await getTopTracks(token, genres, genreMap)
-        //console.log(genreRecommendations)
 
 
         //Step 3 populate the playlist with the songs
         // https://developer.spotify.com/documentation/web-api/reference/add-tracks-to-playlist
         const populatedPlaylist = await populatePlaylist(token, playlist.id, genreTopTracks);
-        //console.log(populatedPlaylist);
-
 
 
         //Step 4 return the playlist information to the front end and populate "Playlist" Component
         const result = await getPlaylist(token, playlist.id);
 
-
-        console.log(result);
-
-        return res.json({ message: "New playlist", result });
+        return res.json({ message: "New playlist" ,result});
     }
 }
 
@@ -126,10 +119,21 @@ async function getTopTracks(token, genres, genreMap) {
 
 
     const allTracks = await Promise.all(trackPromises);
-    const tracks = allTracks[0];
-    const uris = tracks.map(track => track.uri);
-    return uris.flat();
+    //const tracks = allTracks[0];
+    const uris = allTracks.flat().map(track => track.uri);
+    console.log(uris);
+    return shuffleArray(uris);
 }
+
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 
 
 async function populatePlaylist(token, playlist_id, genreTopTracks) {
