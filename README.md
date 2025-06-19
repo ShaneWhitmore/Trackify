@@ -90,4 +90,63 @@ FRONTEND_URI={URI OF FRONTEND PAGE}
 
 # Setup
 
+## Prerequisites
+ 
+### Ensure that Node.js and npm are installed on your device 
+
+https://nodejs.org/en/download
+
+```
+node -v
+npm -v
+```
+
+### Ensure that Git is installed on your device
+
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+```
+git -v
+```
+
+
+## 1. Clone the repository
+
+```
+git clone https://github.com/ShaneWhitmore/Trackify.git
+cd Trackify
+```
+
+## 2. Installing Dependencies
+
+### Backend
+
+```
+cd server
+npm install
+```
+
+### Frontend
+```
+cd ../trackify
+npm install
+```
+
+## 3. Configure Environment Variables (Backend)
+
+Follow the steps to creating a Spotify API dashboard <a href="https://developer.spotify.com/"> here </a>
+
+In the 'server' folder , create a .env file
+Open the .env file and paste in this code
+
+```
+SPOTIFY_CLIENT_ID=""
+SPOTIFY_CLIENT_SECRET=""
+SPOTIFY_REDIRECT_URI={REDIRECT URI TO BACKEND TO REQUEST ACCESS TOKEN}
+FRONTEND_URI={URI OF FRONTEND PAGE}
+
+```
+
+populate the variables with the credentials of the Spotify Dashboard created earlier.
+
 
