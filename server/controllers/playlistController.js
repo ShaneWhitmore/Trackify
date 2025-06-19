@@ -1,3 +1,7 @@
+// © 2025 Shane Whitmore
+// Licensed under the CC BY-NC 4.0 License.
+// See LICENSE file for details.
+
 require('dotenv').config();
 const request = require('request')
 const querystring = require('querystring')
@@ -60,7 +64,7 @@ async function fetchProfile(token) {
 
 //create a new playlist with the playlist information (name , public/private)
 async function createPlaylist(user_id, token, title, visibility) {
-    
+
     const result = await fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
         method: "POST",
         headers: {
@@ -97,7 +101,7 @@ async function getTopTracks(token, genres, genreMap) {
         }
 
         const shuffled = artist.slice().sort(() => Math.random() - 0.5);
-        const selected = shuffled.slice(0, 2);
+        const selected = shuffled.slice(0, 3);
 
         return selected.map(artist => artist.id);
     });

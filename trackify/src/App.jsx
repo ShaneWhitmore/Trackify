@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// © 2025 Shane Whitmore
+// Licensed under the CC BY-NC 4.0 License.
+// See LICENSE file for details.
 
+import React, { useState, useEffect } from 'react'
 import Logo from './images/Logo.png'
 
 import PlaylistForm from './components/PlaylistForm.jsx'

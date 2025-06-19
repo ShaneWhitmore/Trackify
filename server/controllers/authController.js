@@ -1,3 +1,7 @@
+// © 2025 Shane Whitmore
+// Licensed under the CC BY-NC 4.0 License.
+// See LICENSE file for details.
+
 require('dotenv').config();
 const request = require('request')
 const querystring = require('querystring')

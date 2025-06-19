@@ -1,3 +1,7 @@
+// © 2025 Shane Whitmore
+// Licensed under the CC BY-NC 4.0 License.
+// See LICENSE file for details.
+
 import React from "react";
 import { useState, useEffect } from "react"
 import TextField from '@mui/material/TextField';

@@ -89,6 +89,17 @@ FRONTEND_URI={URI OF FRONTEND PAGE}
 
 ---
 
+
+
+## License
+
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.  
+© 2025 Shane Whitmore – see the [LICENSE](LICENSE) file for details.
+
+
+---
+
+
 # Setup
 
 ## Prerequisites
