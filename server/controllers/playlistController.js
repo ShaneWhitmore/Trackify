@@ -51,12 +51,13 @@ exports.createPlaylist = async (req, res) => {
 
 //https://developer.spotify.com/documentation/web-api/reference/start-a-users-playback
 exports.startPlayback = async (req, res) => {
+    console.log("play has been requested");
 
-    const [uri, token] = req.body
+
+    const { uri, token } = req.body;
 
     const play = await start(uri, token);
-
-    return play;
+    return res.json(play);
 }
 
 async function start(uri, token) {
@@ -71,7 +72,10 @@ async function start(uri, token) {
         })
     });
 
-    return await result.json();
+    console.log(result);
+    console.log(result.status);
+
+    return { status: result.status};
 
 }
 
@@ -79,16 +83,16 @@ async function start(uri, token) {
 //https://developer.spotify.com/documentation/web-api/reference/pause-a-users-playback
 exports.pausePlayback = async (req, res) => {
 
-    const [_, token] = req.body;
+    console.log("pause has been requested");
 
-    const pause = await pause(token);
+    const { token } = req.body;
 
-    return pause;
+    const stop = await pause(token);
+    return res.json(stop.status);
 
 }
 
 async function pause(token) {
-    //https://api.spotify.com/v1/me/player/pause
 
     const result = await fetch(`https://api.spotify.com/v1/me/player/pause`, {
         method: "PUT",
@@ -98,7 +102,12 @@ async function pause(token) {
         }
     });
 
-    return await result.json();
+
+    console.log(result);
+    
+    return { status: result.status };
+
+    
 }
 
 
@@ -153,7 +162,7 @@ async function getTopTracks(token, genres, genreMap) {
         }
 
         const shuffled = artist.slice().sort(() => Math.random() - 0.5);
-        const selected = shuffled.slice(0, 3);
+        const selected = shuffled.slice(0, 5);
 
         return selected.map(artist => artist.id);
     });

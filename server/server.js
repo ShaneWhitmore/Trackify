@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(cors({
     origin: 'http://localhost:5173',
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'PUT'],
     credentials: true,
 }));
 
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 
 
 app.use('/' , authRoutes); //handles login and access token request , redirects back to frontend
-app.use('/',playlistRoutes); //handles playlist creation and selecting music for playlist
+app.use('/', playlistRoutes); //handles playlist creation and selecting music for playlist
 
 
 

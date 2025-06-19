@@ -5,6 +5,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import '../stylesheets/Playlist.css'
+import axios from 'axios';
 
 
 import ImportCover from '../images/ImportCover.png';
@@ -18,20 +19,21 @@ function Playlist({ visible, playlist }) {
     const [userName, setUserName] = useState("username");
     const [coverImage, setCoverImage] = useState("");
     const [tracks, setTracks] = useState([]);
-    const [playlistDescription , setDescription] = useState("");
-    const [visibility , setVisibility] = useState(true);
-    const [runPlayback , setRunPlayback] = useState(false);
+    const [playlistDescription, setDescription] = useState("");
+    const [visibility, setVisibility] = useState(true);
+    const [runPlayback, setRunPlayback] = useState(false);
+    const [playlistURI, setPlaylistURI] = useState("");
 
     useEffect(() => {
         if (playlist?.result) {
             const pl = playlist.result;
-            //console.log(playlist);
             setPlaylistName(pl.name || "Playlist Name");
             setTotalTracks(pl.tracks?.total || 0);
             setUserName(pl.owner?.display_name || "username");
             setTracks(pl.tracks?.items);
             setDescription(pl.description);
             setVisibility(pl.public);
+            setPlaylistURI(pl.uri);
             //setCoverImage(playlist.images)
         }
     }, [playlist]);
@@ -42,9 +44,59 @@ function Playlist({ visible, playlist }) {
         description: playlistDescription,
         total_tracks: totalTracks,
         username: userName,
-        visibility: visibility
+        visibility: visibility,
+        uri: playlistURI
 
     }
+
+    const handlePlayButton = async () => {
+        const newState = !runPlayback;
+
+        const token = localStorage.getItem("spotify_token");
+        if (!token) {
+            window.alert("Missing Spotify token. Please log in again.");
+            return;
+        }
+
+        try {
+            if (newState) {
+                //play playback
+                //take the uri of the playlist and user token and send to backend
+                const req = await axios.put("http://localhost:5000/startPlayback", {
+                    uri: playlistURI,
+                    token: token,
+
+                });
+
+                console.log(req);
+
+                if(req.status === 200)
+                {
+                    setRunPlayback(newState);
+                }
+
+                console.log(req);
+            } else {
+                //pause playback uri
+                // take uri of playlist and user token and send to backend
+                const req = await axios.put("http://localhost:5000/pausePlayback", {
+                    token: token,
+                });
+
+                console.log(req);
+
+                if(req.data === 200)
+                {
+                    setRunPlayback(newState);
+                }
+            }
+
+
+        } catch (error) {
+            console.log("Failed to pause playback", error)
+        }
+    }
+
 
     return (
         <>
@@ -63,8 +115,8 @@ function Playlist({ visible, playlist }) {
                         <p>{thePlaylist.total_tracks} songs</p>
 
                     </div>
-                    <div className="playbutton" onClick={() => setRunPlayback(!runPlayback)}>
-                        <img src={runPlayback?PauseButton:PlayButton} alt="Play" />
+                    <div className="playbutton" onClick={() => handlePlayButton()}>
+                        <img src={runPlayback ? PauseButton : PlayButton} alt="Play" />
                     </div>
                 </div>
 
@@ -102,9 +154,6 @@ function Playlist({ visible, playlist }) {
 
 
 function SongTab({ items }) {
-    console.log(items);
-
-
     const songs = items.map((item, i) => {
         const track = item.track;
         const trackName = track.name;
