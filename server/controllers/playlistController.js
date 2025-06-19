@@ -44,11 +44,62 @@ exports.createPlaylist = async (req, res) => {
         //Step 4 return the playlist information to the front end and populate "Playlist" Component
         const result = await getPlaylist(token, playlist.id);
 
-        return res.json({ message: "New playlist" ,result});
+        return res.json({ message: "New playlist", result });
     }
 }
 
 
+//https://developer.spotify.com/documentation/web-api/reference/start-a-users-playback
+exports.startPlayback = async (req, res) => {
+
+    const [uri, token] = req.body
+
+    const play = await start(uri, token);
+
+    return play;
+}
+
+async function start(uri, token) {
+    const result = await fetch(`https://api.spotify.com/v1/me/player/play`, {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            context_uri: uri
+        })
+    });
+
+    return await result.json();
+
+}
+
+
+//https://developer.spotify.com/documentation/web-api/reference/pause-a-users-playback
+exports.pausePlayback = async (req, res) => {
+
+    const [_, token] = req.body;
+
+    const pause = await pause(token);
+
+    return pause;
+
+}
+
+async function pause(token) {
+    //https://api.spotify.com/v1/me/player/pause
+
+    const result = await fetch(`https://api.spotify.com/v1/me/player/pause`, {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+        }
+    });
+
+    return await result.json();
+}
 
 
 // fetch the currently signed in users profile (required to get the user id)
@@ -80,6 +131,7 @@ async function createPlaylist(user_id, token, title, visibility) {
 
     return await result.json();
 }
+
 
 
 

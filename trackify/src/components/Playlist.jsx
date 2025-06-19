@@ -8,7 +8,8 @@ import '../stylesheets/Playlist.css'
 
 
 import ImportCover from '../images/ImportCover.png';
-import PlayButton from '../images/PlayButton.png'
+import PlayButton from '../images/PlayButton.png';
+import PauseButton from '../images/PauseButton.png';
 
 function Playlist({ visible, playlist }) {
 
@@ -19,6 +20,7 @@ function Playlist({ visible, playlist }) {
     const [tracks, setTracks] = useState([]);
     const [playlistDescription , setDescription] = useState("");
     const [visibility , setVisibility] = useState(true);
+    const [runPlayback , setRunPlayback] = useState(false);
 
     useEffect(() => {
         if (playlist?.result) {
@@ -61,8 +63,8 @@ function Playlist({ visible, playlist }) {
                         <p>{thePlaylist.total_tracks} songs</p>
 
                     </div>
-                    <div className="playbutton">
-                        <img src={PlayButton} alt="Play" />
+                    <div className="playbutton" onClick={() => setRunPlayback(!runPlayback)}>
+                        <img src={runPlayback?PauseButton:PlayButton} alt="Play" />
                     </div>
                 </div>
 
