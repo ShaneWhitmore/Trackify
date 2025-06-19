@@ -43,6 +43,7 @@ Each Playlist is tailored to the user who creates them as all songs are taken fr
 <ul>
   <li>Node.js</li>
   <li>Express</li>
+  <li>Nodemon</li>
   <li>Spotify API</li>
 </ul>
 
@@ -136,8 +137,9 @@ npm install
 
 Follow the steps to creating a Spotify API dashboard <a href="https://developer.spotify.com/"> here </a>
 
-In the 'server' folder , create a .env file
-Open the .env file and paste in this code
+In the 'server' folder , create a .env file.
+
+Open the .env file and paste in this code.
 
 ```
 SPOTIFY_CLIENT_ID=""
@@ -149,4 +151,19 @@ FRONTEND_URI={URI OF FRONTEND PAGE}
 
 populate the variables with the credentials of the Spotify Dashboard created earlier.
 
+## 4. Run the Program
 
+### Backend
+
+```
+npm run devStart
+```
+
+### Frontend
+
+In a seperate terminal
+
+```
+cd Trackify/trackify
+npm run dev
+```
