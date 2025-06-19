@@ -121,7 +121,7 @@ function PlaylistForm(props) {
 
             <GenreSection
                 title="Genres"
-                genres={["Rock", "Pop", "Rap", "Disco", "Electric"]}
+                genres={["Rock", "Pop", "Rap", "Jazz", "Reggae", "EDM"]}
                 toggleGenre={toggleGenre}
                 selectedGenres={selectedGenres}
             />
@@ -147,8 +147,6 @@ function PlaylistForm(props) {
 
 function VisibilityToggle({ isPrivate, setIsPrivate }) {
 
-
-
     return (
         <button
             className={`vis-btn ${isPrivate ? "Private" : "Public"}`}
@@ -159,8 +157,6 @@ function VisibilityToggle({ isPrivate, setIsPrivate }) {
             </div>
         </button>
     );
-
-
 }
 
 

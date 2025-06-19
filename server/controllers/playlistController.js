@@ -60,7 +60,7 @@ async function fetchProfile(token) {
 
 //create a new playlist with the playlist information (name , public/private)
 async function createPlaylist(user_id, token, title, visibility) {
-
+    
     const result = await fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
         method: "POST",
         headers: {
@@ -69,8 +69,8 @@ async function createPlaylist(user_id, token, title, visibility) {
         },
         body: JSON.stringify({
             "name": title,
+            "public": visibility,
             "description": "Created using Trackify.com",
-            "public": visibility
         })
     });
 
@@ -119,9 +119,7 @@ async function getTopTracks(token, genres, genreMap) {
 
 
     const allTracks = await Promise.all(trackPromises);
-    //const tracks = allTracks[0];
     const uris = allTracks.flat().map(track => track.uri);
-    console.log(uris);
     return shuffleArray(uris);
 }
 
@@ -137,8 +135,6 @@ function shuffleArray(array) {
 
 
 async function populatePlaylist(token, playlist_id, genreTopTracks) {
-
-    //console.log(genreTopTracks);
 
     const result = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
         method: "POST",

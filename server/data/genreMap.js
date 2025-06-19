@@ -88,6 +88,28 @@ const genreMap = {
     { name: "Burning Spear", id: "3DOWGcheZHPl8EJe8bRjFH" },
     { name: "SOJA", id: "4CfJmXLQeKhMhlINnlETrQ" }
   ],
+  edm: [
+    { name: "Calvin Harris", id: "7CajNmpbOovFoOoasH2HaY" },
+    { name: "David Guetta", id: "1Cs0zKBU1kc0i8ypK3B9ai" },
+    { name: "Zedd", id: "1vCWHaC5f2uS3yhpwWbIA6" },
+    { name: "Marshmello", id: "64KEffDW9EtZ1y2vBY43Vp" },
+    { name: "Kygo", id: "23fqKkggKUBHNkbKtXEls4" },
+    { name: "Martin Garrix", id: "60d24wfXkVzDSfLS6hyCjZ" },
+    { name: "The Chainsmokers", id: "69GGBxA162lTqCwzJG5jLp" },
+    { name: "Illenium", id: "45eNHdiiabvmbp4erw26rg" },
+    { name: "Alan Walker", id: "7Md1dSCLtTjz1o0tK7bF4k" },
+    { name: "Tiësto", id: "2o5jDhtHVPhrJdv3cEQ99Z" },
+    { name: "Steve Aoki", id: "77AiFEVeAVj2ORpC85QVJs" },
+    { name: "Diplo", id: "4ptnH8bGZ4Cmv1n1T1p2tp" },
+    { name: "R3HAB", id: "6fcTRFpz0yH79qSKfof7lp" },
+    { name: "Alesso", id: "4AVFqumd2ogHFlRbKIjp1t" },
+    { name: "ODESZA", id: "21mKp7DqtSNHhCAU2ugvUw" },
+    { name: "Seven Lions", id: "1U1el3k54VvEUzo3ybLPlM" },
+    { name: "Madeon", id: "4frXpPxQQZwbCu3eTGnZEw" },
+    { name: "Deadmau5", id: "2CIMQHirSU0MQqyYHq0eOx" },
+    { name: "Kaskade", id: "3zrnbpWpqHuMAUI3S3gMux" },
+    { name: "Porter Robinson", id: "3dz0NnIZhtKKeXZxLOxCam" }
+  ],
 };
 
 module.exports = genreMap;
