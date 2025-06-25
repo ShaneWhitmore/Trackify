@@ -30,6 +30,11 @@ exports.createPlaylist = async (req, res) => {
         const playlist = await createPlaylist(user_id, token, title, visibility);
 
 
+        //https://developer.spotify.com/documentation/web-api/reference/upload-custom-playlist-cover
+
+        const coveredPlaylist = await uploadCoverImage(token, coverImage, playlist.id)
+
+
         //step 2 search recommended songs for each genre in genres 
         // https://developer.spotify.com/documentation/web-api/reference/get-recommendations
 
@@ -75,7 +80,7 @@ async function start(uri, token) {
     console.log(result);
     console.log(result.status);
 
-    return { status: result.status};
+    return { status: result.status };
 
 }
 
@@ -104,10 +109,10 @@ async function pause(token) {
 
 
     console.log(result);
-    
+
     return { status: result.status };
 
-    
+
 }
 
 
@@ -142,6 +147,25 @@ async function createPlaylist(user_id, token, title, visibility) {
 }
 
 
+
+async function uploadCoverImage(token, coverImage, playlist_id) {
+
+    console.log(coverImage);
+
+    const result = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/images`, {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "image/jpeg"
+        },
+        body: coverImage
+    })
+
+    console.log(result);
+
+
+    //return await result.json();
+}
 
 
 

@@ -17,11 +17,37 @@ function PlaylistForm(props) {
     const [title, setTitle] = useState("");
     const [isPrivate, setIsPrivate] = useState(false);
     const [selectedGenres, setSelectedGenres] = useState(new Set());
+    const [preview, setPreview] = useState(ImportCover);
+    const [base64Image, setBase64Image] = useState(null);
+
+
+
+
+    const handleChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onloadend = () => {
+                const base64Data = reader.result.split(',')[1];
+                setPreview(reader.result);
+                setBase64Image(base64Data);
+
+
+                console.log("Full Data URL:", reader.result); // includes mime type
+                console.log("Base64 only:", (base64Data.length)); // base64 image only
+            };
+
+            reader.readAsDataURL(file);
+        }
+    };
+
 
     function clearForm() {
         setTitle("");
         setIsPrivate(false);
         setSelectedGenres(new Set());
+        setPreview(ImportCover);
         props.onCancel();
     }
 
@@ -48,10 +74,10 @@ function PlaylistForm(props) {
 
                 const req = await axios.post("http://localhost:5000/createPlaylist", {
                     title: title,
-                    coverImage: ImportCover,
+                    coverImage: base64Image,
                     visibility: !isPrivate,
                     genres: Array.from(selectedGenres),
-                    token:token,
+                    token: token,
                 });
 
 
@@ -118,7 +144,20 @@ function PlaylistForm(props) {
                     </div>
                 </div>
                 <div className="playlist-cover">
-                    <img src={ImportCover} alt="Import Cover Image" />
+                    <label htmlFor="image-upload">
+                        <img
+                            src={preview || 'https://via.placeholder.com/200'}
+                            alt="Import Cover"
+                            className="upload-image"
+                        />
+                    </label>
+                    <input
+                        id="image-upload"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleChange}
+                        style={{ display: 'none' }}
+                    />
                 </div>
             </div>
 

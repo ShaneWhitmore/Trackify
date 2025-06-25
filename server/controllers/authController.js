@@ -17,7 +17,7 @@ const FRONTEND_URI = process.env.FRONTEND_URI;
 exports.login = (req, res) => {
 
     var state = "f1g4v5x8m0b4g7lq";
-    var scope = `user-read-private user-read-email playlist-modify-public playlist-modify-private user-modify-playback-state`;
+    var scope = `user-read-private user-read-email playlist-modify-public playlist-modify-private user-modify-playback-state ugc-image-upload`;
 
     res.redirect('https://accounts.spotify.com/authorize?' +
         querystring.stringify({
