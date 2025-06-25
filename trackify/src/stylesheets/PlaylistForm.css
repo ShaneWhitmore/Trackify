@@ -63,9 +63,11 @@
 
 
 .upload-image {
+    height: 120px;
+    width: auto;
     cursor: pointer;
-
 }
+
 
 
 

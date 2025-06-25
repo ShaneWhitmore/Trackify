@@ -49,6 +49,8 @@ exports.createPlaylist = async (req, res) => {
         //Step 4 return the playlist information to the front end and populate "Playlist" Component
         const result = await getPlaylist(token, playlist.id);
 
+        console.log(result);
+
         return res.json({ message: "New playlist", result });
     }
 }
@@ -150,8 +152,6 @@ async function createPlaylist(user_id, token, title, visibility) {
 
 async function uploadCoverImage(token, coverImage, playlist_id) {
 
-    console.log(coverImage);
-
     const result = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/images`, {
         method: "PUT",
         headers: {
@@ -161,10 +161,8 @@ async function uploadCoverImage(token, coverImage, playlist_id) {
         body: coverImage
     })
 
-    console.log(result);
 
-
-    //return await result.json();
+    return await result;
 }
 
 

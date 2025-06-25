@@ -17,7 +17,11 @@ function Playlist({ visible, playlist }) {
     const [playlistName, setPlaylistName] = useState("Playlist Name");
     const [totalTracks, setTotalTracks] = useState(5);
     const [userName, setUserName] = useState("username");
-    const [coverImage, setCoverImage] = useState("");
+    const [coverImage, setCoverImage] = useState([{
+        height: null,
+        url: '',
+        width: null,
+    }]);
     const [tracks, setTracks] = useState([]);
     const [playlistDescription, setDescription] = useState("");
     const [visibility, setVisibility] = useState(true);
@@ -34,7 +38,7 @@ function Playlist({ visible, playlist }) {
             setDescription(pl.description);
             setVisibility(pl.public);
             setPlaylistURI(pl.uri);
-            //setCoverImage(playlist.images)
+            setCoverImage(pl.images)
         }
     }, [playlist]);
 
@@ -45,7 +49,8 @@ function Playlist({ visible, playlist }) {
         total_tracks: totalTracks,
         username: userName,
         visibility: visibility,
-        uri: playlistURI
+        uri: playlistURI,
+        cover: coverImage[0].url
 
     }
 
@@ -70,8 +75,7 @@ function Playlist({ visible, playlist }) {
 
                 console.log(req);
 
-                if(req.status === 200)
-                {
+                if (req.status === 200) {
                     setRunPlayback(newState);
                 }
 
@@ -85,8 +89,7 @@ function Playlist({ visible, playlist }) {
 
                 console.log(req);
 
-                if(req.data === 200)
-                {
+                if (req.data === 200) {
                     setRunPlayback(newState);
                 }
             }
@@ -105,7 +108,7 @@ function Playlist({ visible, playlist }) {
 
                 <div className="playlist-description">
                     <div className="playlist-image">
-                        <img src={ImportCover} alt="Cover Image" />
+                        <img src={coverImage[0]?.url} alt="Cover Image" className="playlist-coverImage" />
                     </div>
                     <div className="playlist-details">
                         <p>{thePlaylist.visibility ? "Public" : "Private"} Playlist</p>
